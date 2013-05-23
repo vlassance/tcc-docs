@@ -1,4 +1,4 @@
-	\documentclass{llncs}
+\documentclass{llncs}
 %%
 \usepackage{algorithm}
 \usepackage{algorithmic}
@@ -26,15 +26,13 @@
 \maketitle
 %%
 \begin{abstract}
-%%
-In this paper, we describe the strategy implemented by the LTI Agent Rescue team for the RoboCup Rescue Agent Simulation 2013 competition. We mainly focus in some aspects identified as the bottleneck of the team's performance on 2011 competition: the map exploration and the coordination strategy. In order to improve the map exploration, we use a map partitioning technique to allocate Police Forces to specific regions of the map, while changing the task allocation approach from a hybrid to a distributed one in order to improve the coordination strategy. Moreover, we implemented some techniques to avoid communication channel overload such as data compression and interleaved communication.
-%%
+In this paper, we describe the strategy implemented by the LTI Agent Rescue team for the RoboCup Rescue Agent Simulation 2013 competition. We mainly focus in some aspects identified as the bottleneck of the team's performance in the 2011 competition: the map exploration and the coordination strategy. In order to improve the map exploration, we use a map partitioning technique to allocate Police Forces to specific regions of the map, while changing the task allocation approach from a hybrid to a distributed one in order to improve the coordination strategy. Moreover, we implemented some techniques to avoid communication channel overload such as data compression and interleaved communication.
 \end{abstract}
 %%
 \section{Introduction}
 \label{sec:introduction}
 %%
-Natural disasters are a source of preoccupation for virtually every country in the world as they usually are difficult to predict and cause huge human and material losses. Altough some disasters may be predicted with a considerable advance, most of them cannot, which leaves a short period of time for any preventive action. Thus, it requires the pre-existence of efficient policies to help handling and responding to such situations, which makes disaster management an important discipline. 
+Natural disasters are a source of concern for virtually every country in the world as they usually are difficult to predict and cause huge human and material losses. Altough some disasters may be predicted with a considerable advance, most of them cannot, which leaves a short period of time for any preventive action. Thus, it requires the pre-existence of efficient policies to help handling and responding to such situations, which makes disaster management an important discipline. 
 
 According to \cite{blanchardEtAl2007}, disaster management is comprised of four phases: mitigation, preparedness, response and recovery. In order to promote research on techniques focused on the response phase of disaster management, the RoboCup Rescue Agent Simulation League \cite{kitanoEtAl1999} was founded in 2000. The competition approaches the problem from a multiagent system perspective, in which teams of heterogeneous agents acts on a simulated post-earthquake scenario. This kind of scenario imposes great challenges to the development of teams of agents since the environment is dynamic, the information and communication are limited and unreliable, and the time to make a decision is limited.
 
