@@ -1,0 +1,57 @@
+%%
+In RoboCup 2011 \cite{pereiraEtAl2011-robocup}, we implemented a strategy that followed a hybrid task allocation approach to control and coordinate agents in the RoboCup Rescue Simulator (RCRS) platform. Such approach was inspired on the \textit{Partial Global Planning} (PGP) approach \cite{durfeeLesser1991} in which the agents exchange information in order to reach common conclusions about the problem to be solved. It is considered {\it partial} because agents have limited information of the environment available in order to make the best decision; on the other hand, it is {\it global} because the agents can exchange and obtain relevant missing information from each other when necessary.
+
+The proposed hybrid approach intended to exploit the advantages of the {\it centralized} and {\it distributed} approaches, considering and handling the existence of both local and global information, making the {\it platoon} agents not completely dependent of the {\it center} agents, being even capable of functioning on a environment without communication. Despite being inspired on PGP approach, the proposed approach had four key differences to the PGP:
+%%
+\begin{itemize}
+%%
+\item The agents exchanged tasks instead of plans;
+%%
+\item There was no direct communication among {\it platoon} agents, which required the performance of such tasks by the {\it center} agents;
+%%
+\item The global information was stored in the {\it center} agents;
+%%
+\item The global information was only requested and used when the agent's had no local tasks to act upon.
+%%
+\end{itemize}
+%%
+
+Based on the experience obtained in RoboCup 2011, we have decided to adopt a new strategy for RoboCup 2013, in which the information storage and decision making are completely local, and the agents exchange obtained informations directly among themselves. The new strategy follows a distributed approach.
+
+The main reason for such change is that, since the release of the new RCRS platform, in 2010, the {\it platoon} agents can communicate through channels directly among themselves, canceling any imperative need of the {\it center} agents to exchange information. In fact, using center-intermediation would generate a delay of one cycle in the process of information exchange, worsening the situation instead of bringing any real advantage in the case of a distributed approach. Hence, the {\it center} agents play no role in this new strategy.
+
+Moreover, using a distributed approach maintains some advantages of the previous one, such as the nonexistence of a single point of failure and the elimination of a possible bottleneck. Besides, task allocation can still be performed even if the agents have little or no interaction with other agents, which is interesting for an environment like the RCRS, where the communication is subject to failure or not available at all.
+
+The disadvantage of this approach is that the communication channel may be overloaded, for example, in the case when all the agents are connected to the same channel. Thus, in order to overcome this problem, a set of techniques such as interleaved information exchange, data compression, and transmission of only required data is applied and detailed in Section \ref{sec:communication}.
+
+In order to implement the new strategy, each agent maintains two databases, one of {\it tasks} and another of {\it world information}. In our context, {\it world information} are data about the state of the environment's objects; {\it tasks} are world information upon which the agents may act, such as buildings on fire for Fire Brigades, blocked roads for Police Forces, and victims for Ambulance Teams. The task database will also indicates which agents are currently acting on each task.
+
+Using these information, the following general agent behavior was designed:
+%%
+\begin{enumerate}
+%%
+\item The agent percepts the environment and receives messages from other agents;
+%%
+\item The agent updates its world information database;
+%%
+\item The agent generates a list of new identified tasks from the world information database;
+%%
+\item The agent adds the new identified tasks to its tasks database; it also updates the list of the agents that are acting on each task;
+%%
+\item The agent calculates the payoff of each task, taking into account the possibility of cooperation with other agents, and chooses the task with the highest payoff for act upon; if the agent has no task it can act upon, it moves randomly on the map;
+%%
+\item The agent sends information to the other agents, comprised of:
+%%
+\begin{itemize}
+%%
+\item the world information whose state has changed;
+%%
+\item the task it has chosen to work on (if any);
+%%
+\end{itemize}
+%%
+\end{enumerate}
+%%
+
+Next, the specific behavior of each kind of agent is described:
+%%

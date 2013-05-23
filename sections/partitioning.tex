@@ -1,0 +1,84 @@
+%%
+The solution we propose to the problem of map exploration is the partitioning of the map into sectors, with each Police Force being assigned to patrol one of the sectors. Police Forces are the obvious choice for explore the map because they have the ability to remove blockades granting access to any place in the map. Additionally, separation of Police Forces in sectors ceases their encounters reducing the number of idle agents.
+
+The maps of the RCRS are graphs, such as the neighbors entities shown in the viewer of the simulator. Then, the goal becomes obtaining sectors in which the set of entities (buildings and roads) of each one forms a connected subgraph. Each entity will belong to an unique sector, so that Police Forces that patrol different sectors do not visit the same location.
+
+The algorithm divides the map into {\it n} sectors, where {\it n} is the number of Police Forces in the map. The number of sectors was defined arbitrarily and may be changed according to the map size and configurations.
+
+The proposed map partitioning method divides the map into sectors comprised of:
+%%
+\begin{itemize}
+%%
+\item An index that identifies it;
+%%
+\item The two sets of X and Y coordinates that delimit its area;
+%%
+\item The set of entities it contains forming a single connected subgraph.
+%%
+\end{itemize}
+%%
+
+The pseudo-algorithm that performs the map partitioning is presented in Pseudo-Algorithm \ref{alg:partitioning}.
+%%
+\floatname{algorithm}{Pseudo-Algorithm}
+\begin{algorithm}
+  \caption{Map partitioning}
+  \label{alg:partitioning}
+  \begin{algorithmic}
+    \REQUIRE $n \Leftarrow numberOfSectors$
+    \STATE
+    \STATE $mapLength \Leftarrow$ Length of the map
+    \STATE $mapHeight \Leftarrow$ Height of the map
+    \STATE $term[2] = Factorization(n)$ \COMMENT{Factorize $n$ into 2 numbers}
+    \IF{$mapLength > mapHeight$}
+      \STATE $length\;=\;mapLength\;/\;term[2]$
+      \STATE $height\;=\;mapHeight\;/\;term[1]$
+    \ELSE
+      \STATE $length\;=\;mapLength\;/\;term[1]$
+      \STATE $height\;=\;mapHeight\;/\;term[2]$
+    \ENDIF
+    \STATE $sectors \Leftarrow createSectors(length, height)$
+    \STATE $sectors \Leftarrow allocateEntities(sectors)$
+    \RETURN $sectors$
+  \end{algorithmic}
+\end{algorithm}
+
+First, it obtains the length ($mapLength$) and height ($mapHeight$) dimensions of the map in pixels. Then, it factorizes (Pseudo-Algorithm \ref{alg:factorization}) the number of sector ($n$) passed as parameter into two terms, where those terms are the closest factors of $n$, e.g. if $n = 20$ then $term[1] = 4$ and $term[2] = 5$.
+%%
+\floatname{algorithm}{Pseudo-Algorithm}
+\begin{algorithm}
+  \caption{Factorization}
+  \label{alg:factorization}
+  \begin{algorithmic}
+    \REQUIRE $n \Leftarrow numberOfSectors$
+    \STATE
+    \STATE $difference \Leftarrow \infty$
+    \FOR{$i=1$ to $\sqrt{n}$}
+      \IF{($n\bmod i$) = 0}
+        \IF{$\left|n - (n / i)\right| < difference$}
+          \STATE $result \Leftarrow (i, n / i)$
+          \STATE $difference \Leftarrow \left|n - (n / i)\right|$ 
+        \ENDIF
+      \ENDIF
+    \ENDFOR
+    \RETURN $result$
+  \end{algorithmic}
+\end{algorithm}
+
+After this, the largest dimension is divided by the largest term and the smallest dimension is divided by the smallest term. Based on those values, the sectors are created and their set of X and Y coordinates are adjusted.
+
+In the sequence, for each sector, the entities geographically contained in it are identified and grouped into connected subgraphs (Pseudo-Algorithm \ref{alg:allocateEntities}). Note that there may be more than one connected subgraph in each sector. Thus, the largest connected subgraph of each sector is chosen as the main connected subgraph of that sector and the remaining subgraphs are relinked to one of the main subgraphs. The relink is performed between the subgraph entities closest to the largest main subgraph that may form a new connected subgraph.
+%%
+\floatname{algorithm}{Pseudo-Algorithm}
+\begin{algorithm}
+  \caption{Allocates Entities}
+  \label{alg:allocateEntities}
+  \begin{algorithmic}
+    \REQUIRE $sectors \Leftarrow$ Created Sectors
+    \STATE
+    \STATE Identify the entities within each sector
+    \STATE Identify the largest connected subgraph within each sector
+    \STATE Allocate the remaining subgraphs of each sector to a sector's main graph
+  \end{algorithmic}
+\end{algorithm}
+%%

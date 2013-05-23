@@ -1,0 +1,11 @@
+%%
+Communication is usually a limited resource in a disaster situation, nevertheless such resource is extremely useful for coordination purposes and sharing of information. Those characteristics are very well reflected in the RCRS platform with the limited bandwidth, probability of drop a message, and probability of channel failure.
+
+In order to overcome those limitations, we implemented several techniques that allow a better use of the resources available and circumvent any problem it may be experienced during the simulation.
+
+The first improvement incorporated is the use of Adaptive Huffman coding \cite{vitter1987}, which allows the data compression and transmission of more data over the same amount of bandwidth. The Adaptive Huffman coding is an adaptive technique based on Huffman coding \cite{huffman1952} used for data compression in real time since permits building the code as the symbols are being transmitted, having no initial knowledge of source distribution, that allows one-pass encoding and adaptation to changing conditions in data.
+
+Since the use of any adaptive coding technique makes the data transmission much more sensitive to transmission errors, and it may happen in RCRS, we added a 1 byte Cyclic Redundancy Check (CRC) field in every message transmitted. The CRC value is the lowest byte of the sum of all the message bytes.
+
+Another improvement is the interleaved used of the channel by different agents depending on their IDs, where agents with even IDs transmit on even cycle, while the others transmit on odd cycles. Despite of the benefit of not overload the channel, such technique may cause a delay on information transmission, because of that we apply such technique only when the channel bandwidth is considered insufficient for the data transmission, which is still in the analysis phase.
+%%
