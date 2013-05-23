@@ -1,7 +1,7 @@
 %%
-The solution we propose to the problem of map exploration is the partitioning of the map into sectors, with each Police Force being assigned to patrol one of the sectors. Police Forces are the obvious choice for explore the map because they have the ability to remove blockades granting access to any place in the map. Additionally, separation of Police Forces in sectors ceases their encounters reducing the number of idle agents.
+The solution we propose to the problem of map exploration is the partitioning of the map into sectors, in which each Police Force is assigned to patrol one of the sectors. Police Forces are the obvious choice to explore the map because they have the ability to remove blockades, granting access to any place in the map. Additionally, division of Police Forces in sectors ceases their encounters reducing the number of idle agents.
 
-The maps of the RCRS are graphs, such as the neighbors entities shown in the viewer of the simulator. Then, the goal becomes obtaining sectors in which the set of entities (buildings and roads) of each one forms a connected subgraph. Each entity will belong to an unique sector, so that Police Forces that patrol different sectors do not visit the same location.
+The maps of the RCRS are graphs, such as the neighbors entities shown in the viewer of the simulator. Then, the goal is to obtain sectors in which their set of entities (buildings and roads) form a connected subgraph. Each entity will belong to an unique sector, so that Police Forces that patrol different sectors do not visit the same location.
 
 The algorithm divides the map into {\it n} sectors, where {\it n} is the number of Police Forces in the map. The number of sectors was defined arbitrarily and may be changed according to the map size and configurations.
 
