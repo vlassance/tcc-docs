@@ -1,5 +1,5 @@
 %%
-The Fire Brigade has the most difficult coordination of the three kinds of agents, since as opposed to victims and blockades, fires are highly dynamic, appearing randomly and spreading during the course of the simulation; they also may reemerge after being extinguished.
+The Fire Brigade has the most difficult coordination of the three kinds of agents, since, as opposed to victims and blockades, fires are highly dynamic. They can appear randomly, spread during the course of the simulation and also reemerge after being extinguished.
 
 The goal of the Fire Brigades is to find fires quickly and extinguish them, preventing it from spreading. Map exploration is important for that, so Police Forces play an important role in the fire fighting activity. In case the Fire Brigade needs to choose which burning building it will try to extinguish the fire, it first calculates the payoff (Eq. \ref{eq:fireBrigade}) of all the fire it knows and chooses the one with the highest payoff value
 %%
@@ -11,5 +11,5 @@ The goal of the Fire Brigades is to find fires quickly and extinguish them, prev
 \end{equation}
 %%
 
-Using Eq. \ref{eq:fireBrigade}, it is expected the Fire Brigade to choose the building with the smallest area, highest fire intensity, closest to it and with the largest number of neighbors buildings that are not burning. Therefore, it should choose a small building that is closer to it and it is located at the border of a fire cluster.
+Using Eq. \ref{eq:fireBrigade}, it is expected to the Fire Brigade to choose the closest building with the smallest area, highest fire intensity and with the largest number of neighbors buildings that are not burning. Therefore, it should choose a small building that is closer to it and it is located at the border of a fire cluster.
 %%
