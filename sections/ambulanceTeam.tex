@@ -1,5 +1,14 @@
 %%
-The aim of the Ambulance Team is to rescue the largest number of civilians trapped inside buildings, called victims. In order to succeed in its goal, if the Ambulance Team has no task assigned to act upon, it checks its tasks database and calculates the payoff value related to each task in it. The payoff calculus is the difference between the expected time to rescue the victim and the time of life the victim still have. Then, the Ambulance Team chooses the task with the highest value to act upon. Once a task is selected, the Ambulance Team moves to the victims location, performs the rescue procedure, loads the victim, transports it to the closest unblocked refuge, and unloads the victim.
+The aim of the Ambulance Team is to rescue the largest number of civilians trapped inside buildings, called victims. In order to succeed in its goal, if the Ambulance Team has no task assigned to act upon, it checks its tasks database and calculates the payoff value related to each task in it. The payoff calculus (Eq. \ref{eq:ambulance}) is the difference between the remaining life time of the victim and the expected time to rescue it, which is calculated based on the distance from the ambulance to the victim (distanceAV), the time to load the victim (loadTime), the distance from the victim location to the nearest refuge (distanceVR) and the time to unload the victim (unloadTime). Then, the Ambulance Team chooses the task with the highest payoff value to act upon. Once a task is selected, the Ambulance Team moves to the victims location, performs the rescue procedure, loads the victim, transports it to the closest unblocked refuge, and unloads the victim.
 
-Usually, the Ambulance Team sticks with the task until the rescue is complete (victim in the refuge), however, some situations may cause the Ambulance Team to give up on the victim and look for other task to act upon, for example if the Ambulance Team cannot reach the victim because all the possible paths are blocked or if the Ambulance Team identifies that the building where the victim is trapped in is on fire.
+%%
+\begin{equation}
+\label{eq:ambulance}
+%%
+victimLifeTime - \left(\frac{1}{distanceAV} + loadTime + \frac{1}{distanceVR} + unloadTime\right)
+%%
+\end{equation}
+%%
+
+Usually, the Ambulance Team acts on the same task until the rescue is complete (victim in the refuge), however, some situations may cause the Ambulance Team to give up on the victim and look for other task to act upon, for example if the Ambulance Team cannot reach the victim because all the possible paths are blocked or if the Ambulance Team identifies that the building in which the victim is trapped is on fire.
 %%
