@@ -1,1 +1,23 @@
-With the purpose of understanding the impact of the new features for the competitions, we have analyzed the map partitioning strategy by running tests using some of the 2011 RoboCup Rescue Agent Simulation League\footnote{http://roborescue.sourceforge.net/results2011/index.html} maps, as explained in more details in \cite{artigo-particionamento}.
+With the purpose of understanding the impact of the new features for the competitions, we have analyzed the map partitioning strategy by running tests using some of the 2011 RoboCup Rescue Agent Simulation League\footnote{http://roborescue.sourceforge.net/results2011/index.html} maps \cite{artigo-particionamento}.
+
+\begin{table}\centering
+	\label{tab:caracteristicas}
+    \begin{tabular}{|c|c|c|c|c|c|}
+	\hline
+    Characteristics and Results			& Berlin    & Istanbul  & Kobe      & Paris     & VC        \\ \hline
+    Dimension (in MPx)       			& 2.2 x 1.6 & 1.3 x 1.0 & 0.5 x 0.3 & 1.0 x 1.0 & 0.4 x 0.4 \\ \hline
+    Entities (in hundreds)	 			& 48        & 46        & 22.5      & 46.5      & 32        \\ \hline
+    Police agents              			& 6         & 11        & 20        & 30        & 25        \\ \hline
+	Number of Sectors      				& 6         & 11        & 20        & 30        & 25        \\ \hline
+	AVG of entities / sector			& 802       & 417       & 113       & 155       & 129       \\ \hline
+	STDDEV of entities / sector			& 140       & 299       & 73        & 115       & 47        \\ \hline
+	AVG/STDDEV ratio					& 17.46\%   & 71.70\%   & 64.60\%   & 74.19\%   & 36.43\%   \\ \hline
+    \end{tabular}
+    \caption {Characteristics and Results of the Map Partioning}
+\end{table}
+
+Given the characteristics of the 5 maps used in the tests and using the number of police agents as the number of sectors, the average number and the standard deviation of entities per sector was calculated for each map. We can see the details in Table 1. Therefore, it is possible to infer from the results that VC and Berlin maps have shapes which are more likely to fit rectangular sectors.
+
+A number of simulations using a team with Map Partitioning and another one without it served as input to the Wilcoxon’s Rank Sum Test, in order to compare some key performance indicators, like the number of civilians found during the whole execution and the step in the simulation the first fire was found.
+
+Even though it was not possible to prove that the improvement was statistically significant, the Map Partioning showed better results in most cases for all metrics. More details can be found in \cite{artigo-particionamento}.
