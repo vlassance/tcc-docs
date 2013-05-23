@@ -43,27 +43,7 @@ The pseudo-algorithm that performs the map partitioning is presented in Pseudo-A
   \end{algorithmic}
 \end{algorithm}
 
-First, it obtains the length ($mapLength$) and height ($mapHeight$) dimensions of the map in pixels. Then, it factorizes (Pseudo-Algorithm \ref{alg:factorization}) the number of sector ($n$) passed as parameter into two terms, where those terms are the closest factors of $n$, e.g. if $n = 20$ then $term[1] = 4$ and $term[2] = 5$.
-%%
-\floatname{algorithm}{Pseudo-Algorithm}
-\begin{algorithm}
-  \caption{Factorization}
-  \label{alg:factorization}
-  \begin{algorithmic}
-    \REQUIRE $n \Leftarrow numberOfSectors$
-    \STATE
-    \STATE $difference \Leftarrow \infty$
-    \FOR{$i=1$ to $\sqrt{n}$}
-      \IF{($n\bmod i$) = 0}
-        \IF{$\left|n - (n / i)\right| < difference$}
-          \STATE $result \Leftarrow (i, n / i)$
-          \STATE $difference \Leftarrow \left|n - (n / i)\right|$ 
-        \ENDIF
-      \ENDIF
-    \ENDFOR
-    \RETURN $result$
-  \end{algorithmic}
-\end{algorithm}
+First, it obtains the length ($mapLength$) and height ($mapHeight$) dimensions of the map in pixels. Then, it factorizes the number of sector ($n$) passed as parameter into two terms, where those terms are the closest factors of $n$, e.g. if $n = 20$ then $term[1] = 4$ and $term[2] = 5$. If $n$ is a prime number greater then 3, then the the first step would be to get the biggest non-prime number that is smaller than $n$ ($n$ -1) and use this value in the factorization, then the remaining agent would be allocated randomly in one of the sectors. This case has not been covered by the Pseudo-Algorithm \ref{alg:partitioning} for the sake of legibility.
 
 After this, the largest dimension is divided by the largest term and the smallest dimension is divided by the smallest term. Based on those values, the sectors are created and their set of X and Y coordinates are adjusted.
 
