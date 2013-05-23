@@ -1,0 +1,42 @@
+\begin{thebibliography}{1}
+
+\bibitem{blanchardEtAl2007}
+W.~Blanchard, L.~G. Canton, C.~L. Cwiak, K.~C. Goss, D.~A. McEntire,
+  L.~Newsome, M.~D. Selvers, E.~A. Sorchik, K.~Stenson, J.~E. Turner, III,
+  W.~L. Waugh, Jr., and D.~West.
+\newblock Principles of emergency management supplement.
+\newblock Technical report, International Association of Emergency Managers,
+  2007.
+
+\bibitem{durfeeLesser1991}
+E.~H. Durfee and V.~R. Lesser.
+\newblock Partial global planning: A coordination framework for distributed
+  hypothesis formation.
+\newblock {\em {IEEE} Transactions on Systems, Man, and Cybernetics},
+  21(5):1167--1183, sep/oct 1991.
+
+\bibitem{huffman1952}
+D.~A. Huffman.
+\newblock A method for the construction of {Minimum-Redundancy} codes.
+\newblock {\em Proceedings of the IRE}, 40(9):1098--1101, 1952.
+
+\bibitem{kitanoEtAl1999}
+H.~Kitano, S.~Tadokoro, I.~Noda, H.~Matsubara, T.~Takahashi, A.~Shinjou, and
+  S.~Shimada.
+\newblock Robocup rescue: Search and rescue in large-scale disasters as a
+  domain for autonomous agents research.
+\newblock In {\em Proceedings of the {IEEE} International Conference on
+  Systems, Man, and Cybernetics}, volume~6, pages 739--743, Tokyo, Japan,
+  October 1999. {IEEE}.
+
+\bibitem{pereiraEtAl2011-robocup}
+A.~H. Pereira, L.~G. Nardin, A.~A.~F. Brand{\~a}o, and J.~S. Sichman.
+\newblock {LTI Agent Rescue} team: A {BDI}-based approach for {Robocup Rescue}.
+\newblock In {\em Proceedings of the RoboCup 2011}, Istanbul, Turkey, 2011.
+
+\bibitem{vitter1987}
+J.~S. Vitter.
+\newblock Design and analysis of dynamic huffman codes.
+\newblock {\em J. ACM}, 34:825--845, 1987.
+
+\end{thebibliography}
